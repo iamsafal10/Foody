@@ -1,21 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "@reduxjs/toolkit";
-const initialState = {
-  caart: [],
-};
+// state is an object here of array as a key
+// state.cartItems is an array of objects in which object is getting pushed
 const cartSlice = createSlice({
   name: "cart",
-  initialState,
+  initialState: {
+    cartItems: [],
+  },
   reducers: {
-    addToCart: (state, action) => {
-      state.cart.push(useActionState.payload);
+    addToCart: (state, actions) => {
+      state.cartItems.push(actions.payload);
     },
-    removeFromCart: (state, action) => {
-      state.cart = state.cart = state.cart.filter(
-        (item) => item.id != action.payload.id
+    removeFromCart: (state, actions) => {
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id != actions.payload.id
       );
     },
   },
 });
 export const { addToCart, removeFromCart } = cartSlice.actions;
-export default CartSlice.reducer;
+export default cartSlice.reducer;

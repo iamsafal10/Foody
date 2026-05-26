@@ -1,4 +1,5 @@
 import React from "react";
+import { MdDelete } from "react-icons/md";
 
 const ItemCard = () => {
   return (
@@ -33,6 +34,9 @@ const ItemCard = () => {
 
           <button className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center hover:bg-green-500 hover:text-white transition-all">
             +
+          </button>
+          <button className="text-red-500 hover:text-red-700 text-xl transition-all">
+            <MdDelete className="text-red-500 text-2xl cursor-pointer hover:text-red-700" />
           </button>
         </div>
       </div>
