@@ -2,7 +2,17 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { incQty, decQty, removeFromCart } from "../slices/CartSlice";
-const ItemCard = ({ id, image, title, desc, rating, price, qty }) => {
+import toast from "react-hot-toast";
+const ItemCard = ({
+  id,
+  image,
+  title,
+  desc,
+  rating,
+  price,
+  qty,
+  handleToast,
+}) => {
   const dispatch = useDispatch();
   return (
     <div>
@@ -19,7 +29,7 @@ const ItemCard = ({ id, image, title, desc, rating, price, qty }) => {
 
           <div>
             <h2 className="font-semibold text-gray-800 text-sm sm:text-base">
-              {name}
+              {title}
             </h2>
 
             <p className="text-green-500 font-bold">₹{price}</p>
@@ -81,6 +91,9 @@ const ItemCard = ({ id, image, title, desc, rating, price, qty }) => {
                     qty,
                   })
                 );
+                toast(`${title} Removed!`, {
+                  icon: "❌",
+                });
               }}
               className="text-red-500 text-2xl cursor-pointer hover:text-red-700"
             />

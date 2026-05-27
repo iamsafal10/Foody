@@ -5,7 +5,7 @@ import { addToCart } from "../slices/CartSlice";
 const FoodCard = ({ id, desc, rating, price, title, image, handleToast }) => {
   const dispatch = useDispatch();
   return (
-    <div className="w-72 bg-gray-100 p-4 rounded-2xl">
+    <div className="w-72 bg-gray-100 py-4 px-4 rounded-2xl">
       <div className="bg-white rounded-2xl shadow-md p-4 hover:shadow-xl transition-all duration-300">
         {/* Food Image */}
         <div className="flex justify-center overflow-hidden">
@@ -18,9 +18,7 @@ const FoodCard = ({ id, desc, rating, price, title, image, handleToast }) => {
 
         {/* Header */}
         <div className="flex justify-between items-center mt-3">
-          <h2 className="text-xl font-semibold text-gray-800">
-            {title.slice(0, 10)}
-          </h2>
+          <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
 
           <p className="text-green-500 font-bold text-lg">₹{price}</p>
         </div>
