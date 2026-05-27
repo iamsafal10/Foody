@@ -8,23 +8,26 @@ const FoodCard = ({ id, desc, rating, price, title, image, handleToast }) => {
     <div className="w-72 bg-gray-100 py-4 px-4 rounded-2xl">
       <div className="bg-white rounded-2xl shadow-md p-4 hover:shadow-xl transition-all duration-300">
         {/* Food Image */}
-        <div className="flex justify-center overflow-hidden">
+        <div className="flex justify-center tems-center h-40 overflow-hidden">
           <img
             src={image}
             alt="food"
-            className="w-40 h-32 object-contain transition-transform duration-300 hover:scale-110"
+            className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-110"
           />
         </div>
 
         {/* Header */}
         <div className="flex justify-between items-center mt-3">
-          <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
+          <h2 className="text-xl font-semibold text-gray-800 min-h-16">
+            {title}
+          </h2>
 
           <p className="text-green-500 font-bold text-lg">₹{price}</p>
         </div>
 
         {/* Description */}
-        <p className="text-gray-500 text-sm mt-2 leading-5">
+        <p className="text-gray-500 text-sm mt-2 leading-5 min-h-12.5">
+          {" "}
           {desc.slice(0, 50)}
         </p>
 

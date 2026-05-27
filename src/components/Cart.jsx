@@ -16,7 +16,7 @@ const Cart = ({ setShowCart }) => {
     <>
       <div className="w-full max-w-sm h-screen bg-gray-100 p-4 flex flex-col shadow-xl overflow-hidden">
         {/* Top Section */}
-        <div>
+        <div className="flex flex-col flex-1 overflow-hidden">
           {/* Header */}
           <div className="flex justify-between items-center mr-4 mb-6">
             <h1 className="text-2xl font-bold text-gray-800">My Orders</h1>
@@ -28,7 +28,8 @@ const Cart = ({ setShowCart }) => {
               />
             </button>
           </div>
-          <div className="flex-1 overflow-y-auto pr-1">
+          <div className="flex-1 overflow-y-auto pr-1 min-h-0">
+            {" "}
             {items.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-[70vh] text-center">
                 <img
@@ -74,7 +75,14 @@ const Cart = ({ setShowCart }) => {
           </div>
 
           <button
-            onClick={() => navigate("/success")}
+            onClick={() => {
+              setShowCart(false);
+              if (items.length > 0) {
+                navigate("/success");
+              } else {
+                navigate("/");
+              }
+            }}
             className="w-full cursor-pointer bg-green-500 hover:bg-green-600 text-white py-3 rounded-2xl text-lg font-semibold transition-all duration-300"
           >
             Checkout

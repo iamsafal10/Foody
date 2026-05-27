@@ -1,10 +1,14 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../slices/CartSlice";
 const Success = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-green-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-green-50 to-green-100 px-4">
       <motion.div
         initial={{ scale: 0.5, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -45,6 +49,10 @@ const Success = () => {
 
         {/* Button */}
         <motion.button
+          onClick={() => {
+            dispatch(emptyCart());
+            navigate("/")
+            }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="mt-8 bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-2xl text-lg font-semibold shadow-lg transition-all"
