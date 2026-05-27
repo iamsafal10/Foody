@@ -5,7 +5,11 @@ import { useSelector } from "react-redux";
 
 const Cart = ({ setShowCart }) => {
   const items = useSelector((state) => state.cart.cartItems);
-//   console.log(items);
+  const totalItems = items.reduce((totQ, item) => totQ + item.qty, 0);
+  const totalCost = items.reduce(
+    (totC, item) => totC + item.qty * item.price,
+    0
+  );
   return (
     <div className="w-full max-w-sm h-screen bg-gray-100 p-4 flex flex-col shadow-xl overflow-hidden">
       {/* Top Section */}
@@ -58,12 +62,12 @@ const Cart = ({ setShowCart }) => {
         <div className="flex justify-between text-lg font-semibold text-gray-800 mb-5">
           <span>Total Items :</span>
 
-          <span className="text-gray-800">2</span>
+          <span className="text-gray-800">{totalItems}</span>
         </div>
         <div className="flex justify-between text-lg font-semibold text-gray-800 mb-5">
           <span>Total Amount :</span>
 
-          <span className="text-green-500">₹130</span>
+          <span className="text-green-500">₹{totalCost}</span>
         </div>
 
         <button className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-2xl text-lg font-semibold transition-all duration-300">
